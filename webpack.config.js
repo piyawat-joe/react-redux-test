@@ -1,22 +1,22 @@
 const path = require('path');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
-const CompressionPlugin = require('compression-webpack-plugin');
-const ExtractTextPlugin = require('extract-text-webpack-plugin');
+//const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+//const CompressionPlugin = require('compression-webpack-plugin');
+//const ExtractTextPlugin = require('extract-text-webpack-plugin');
 module.exports = (env) => {
   const isProduction = env === 'production';
   console.log('env',env);
-  const CSSExtract = new ExtractTextPlugin('styles.css');
+  //const CSSExtract = new ExtractTextPlugin('styles.css');
  
   return {
   //entry: './src/playground/redux-expensify.js',
   //entry: './src/playground/destructuring.js',
-    plugins: [
-    new BundleAnalyzerPlugin(),
-    new CompressionPlugin({
-    algorithm: 'gzip'
-    }),
-    CSSExtract
-  ],
+    //plugins: [
+    //new BundleAnalyzerPlugin(),
+    //new CompressionPlugin({
+    //algorithm: 'gzip'
+    //}),
+    //CSSExtract
+  //],
   entry: './src/app.js',
   output: {
     path: path.join(__dirname, 'public'),
@@ -29,22 +29,11 @@ module.exports = (env) => {
       exclude: /node_modules/
     }, {
       test: /\.s?css$/,
-     use: CSSExtract.extract({
      use: [
-       {
-        loader: 'css-loader',
-         options: {
-           sourceMap: true
-         }
-       },
-       {
-         loader: 'sass-loader',
-         options: {
-           sourceMap: true
-         }
-       }
+        'style-loader',
+        'css-loader',
+        'sass-loader'
       ]
-     })
     },{
       test: /\.less$/,
       use: [
