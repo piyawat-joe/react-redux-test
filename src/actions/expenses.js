@@ -61,6 +61,11 @@ export const setExpenses = (expenses) => ({
   expenses
 });
 
+//export const startSetExpenses
+//1. Fetch all expense data once
+//2. Parse data into an array
+//3. Dispatch setExpenses
+
 export const startSetExpenses = () => {
   return (dispatch) => {
     return database.ref('expenses').once('value').then((snapshot) => {
