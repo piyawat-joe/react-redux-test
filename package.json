@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "ajax": "0.0.4",
-    "antd": "3.5.2",
+    "antd": "3.26.20",
     "axios": "0.18.0",
     "babel-cli": "6.26",
     "babel-core": "6.26.3",
